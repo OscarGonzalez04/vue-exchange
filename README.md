@@ -1,4 +1,4 @@
-# platzi-exchange
+# vue-exchange
 
 ## Project setup
 ```
