@@ -1,17 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <px-header :links="links"></px-header>
+
+    <!-- Contenido que se remplara al cambiar la ruta para eso usamos: router-view -->
+    <router-view
+      class="container px-5 sm:px-15 py-20 flex justify-center"
+    ></router-view>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import PxHeader from "@/components/PxHeader";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    "px-header": PxHeader
+  },
+
+  data(){
+    return {
+      links: [
+        {
+          title:'BTC',
+          to: { name:'coin-detail', params: { id:'bitcoin' } }
+        },
+        {
+          title:'ETH',
+          to: { name:'coin-detail', params: { id:'ethereum' } }
+        },
+        {
+          title:'XRP',
+          to: { name:'coin-detail', params: { id:'ripple' } }
+        }
+      ]
+    }
   }
 };
 </script>
@@ -19,10 +43,5 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
